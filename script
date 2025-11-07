@@ -1,32 +1,45 @@
 // ==UserScript==
-// @name        Auto-Click Next Image (i9educacao)
-// @namespace   Violentmonkey Scripts
-// @match       https://i9educacao.com/watch-course/post-graduation/vf6IF7xEjnygV0J4ggce
-// @grant       none
-// @version     1.1
-// @author      Sobeitnow
-// @description Clica automaticamente na imagem 'next.svg' a cada 30 segundos na página de visualização de curso da i9educacao.
+// @name         i9educacao - Clique Automático 'Next'
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  Clica na imagem 'next.svg' a cada 30 segundos
+// @author       Seu Nome
+// @match        *://*.i9educacao.com/*
+// @grant        none
+// @run-at       document-idle
 // ==/UserScript==
 
 (function() {
     'use strict';
 
-    // Função que tenta encontrar e clicar na imagem "next"
-    function clickNextImage() {
-        // Seleciona a imagem com base no atributo src e na classe CSS
-        const image = document.querySelector('img[src="/assets/icons/next.svg"].h-6');
+    // --- CONFIGURAÇÃO ---
 
-        if (image) {
-            // Se a imagem for encontrada, simula um clique
-            image.click();
-            console.log('Script Violentmonkey: Imagem "next" clicada com sucesso!');
+    // Intervalo em milissegundos (30 segundos = 30000 ms)
+    const intervalo = 30000;
+
+    // Seletor de CSS para a imagem da seta "Próxima aula"
+    const seletorDoElemento = "img[src$='next.svg']";
+
+    // --- FIM DA CONFIGURAÇÃO ---
+
+    console.log("Script 'i9educacao - Clique Automático' CARREGADO.");
+
+    // Função que procura e clica no elemento
+    function clicarNoElemento() {
+
+        // Encontra o elemento na página
+        const elemento = document.querySelector(seletorDoElemento);
+
+        // Verifica se o elemento foi encontrado
+        if (elemento) {
+            console.log("Elemento 'next.svg' encontrado. Clicando...");
+            elemento.click();
         } else {
-            // Se a imagem não for encontrada, registra uma mensagem no console
-            console.log('Script Violentmonkey: Imagem "next" não encontrada no momento. Tentando novamente em 20 segundos...');
+            console.log("Elemento 'next.svg' não encontrado. Aguardando a próxima tentativa...");
         }
     }
 
-    // Inicia um temporizador que executa a função clickNextImage a cada 20 segundos (20000 milissegundos)
-    setInterval(clickNextImage, 30000);
+    // Inicia o temporizador que executa a função repetidamente
+    setInterval(clicarNoElemento, intervalo);
 
 })();
