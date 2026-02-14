@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.0
 // @description  Clica na imagem 'next.svg' a cada 30 segundos
-// @author       Seu Nome
+// @author       Sobeitnow0
 // @match        *://*.i9educacao.com/*
 // @grant        none
 // @run-at       document-idle
