@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         i9educacao - Clique Automático 'Next'
 // @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  Clica na imagem 'next.svg' a cada 30 segundos
-// @author       Sobeitnow0
+// @version      1.1
+// @description  Clica na imagem 'next.svg' a cada 240 segundos
+// @author       Seu Nome
 // @match        *://*.i9educacao.com/*
 // @grant        none
 // @run-at       document-idle
@@ -14,11 +14,11 @@
 
     // --- CONFIGURAÇÃO ---
 
-    // Intervalo em milissegundos (30 segundos = 30000 ms)
-    const intervalo = 30000;
+    // Intervalo em milissegundos (240 segundos = 240000 ms)
+    const intervalo = 240000;
 
-    // Seletor de CSS para a imagem da seta "Próxima aula"
-    const seletorDoElemento = "img[src$='next.svg']";
+    // Seletor de CSS CORRIGIDO para a imagem da seta "Próxima aula"
+    const seletorDoElemento = "img[alt='Avançar'][src='/assets/icons/next.svg']";
 
     // --- FIM DA CONFIGURAÇÃO ---
 
@@ -27,7 +27,7 @@
     // Função que procura e clica no elemento
     function clicarNoElemento() {
 
-        // Encontra o elemento na página
+        // Encontra o elemento na página usando o seletor CSS
         const elemento = document.querySelector(seletorDoElemento);
 
         // Verifica se o elemento foi encontrado
